@@ -15,4 +15,4 @@ public static class EndpointRegistration
         api.MapEndpoint<HelloWorldEndpoint>();
         api.MapEndpoint<SecondEndpoint>();
     } 
-    }
+}
