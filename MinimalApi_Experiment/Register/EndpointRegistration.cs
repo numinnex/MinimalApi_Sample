@@ -7,7 +7,8 @@ public static class EndpointRegistration
 {
     public static void RegisterEndpoints(this WebApplication app)
     {
-        app.MapEndpoint<HelloWorldEndpoint>();
-        app.MapEndpoint<SecondEndpoint>();
+        var api = app.NewVersionedApi().WithTags("tag");
+        api.MapEndpoint<HelloWorldEndpoint>();
+        api.MapEndpoint<SecondEndpoint>();
     } 
-}
+    }

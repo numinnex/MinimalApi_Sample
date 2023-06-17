@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MinimalApi_Experiment.Endpoint;
 
@@ -5,6 +7,7 @@ namespace MinimalApi_Experiment.Endpoints;
 
 public sealed class HelloWorldEndpoint : IEndpoint
 {
+    public static ApiVersion EndpointVersion => new (1);
     public static string Pattern  => "hello";
     public static HttpMethod Method => HttpMethod.Get;
 

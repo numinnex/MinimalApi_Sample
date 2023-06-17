@@ -1,15 +1,17 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+
 namespace MinimalApi_Experiment.Endpoint;
 
 public static class EndpointBuilder
 {
-    public static IEndpointRouteBuilder MapEndpoint<T>(this IEndpointRouteBuilder app)
+    public static RouteHandlerBuilder MapEndpoint<T>(this IVersionedEndpointRouteBuilder app)
     where T : IEndpoint
     {
-        app.MapMethods(
+        return app.MapMethods(
             T.Pattern,
-            new []{ T.Method.ToString()},
+            new[] { T.Method.ToString() },
             T.Handler
-            );
-        return app;
+        ).HasApiVersion(T.EndpointVersion).MapToApiVersion(T.EndpointVersion);
     } 
 }
