@@ -7,8 +7,9 @@ public sealed class SecondEndpoint : IEndpoint
 {
     public static string Pattern => "second";
     public static HttpMethod Method => HttpMethod.Get;
-    public static Delegate Handler => Ok<string> () =>
+    public static Delegate Handler => async Task<Ok<string>> () =>
     {
-        return TypedResults.Ok("second endpoint");
+        await Task.Delay(1000);
+       return TypedResults.Ok("second endpoint");
     };
 }
